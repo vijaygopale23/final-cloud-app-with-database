@@ -1,0 +1,25 @@
+
+{% extends "onlinecourse/course_base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>{{ course.name }}</h1>
+
+    {% if course.description %}
+        <p>{{ course.description }}</p>
+    {% endif %}
+
+    <h2 class="mt-4">Lessons</h2>
+
+    <div class="list-group">
+        {% for lesson in course.lesson_set.all %}
+            <div class="list-group-item">
+                <h5>{{ lesson.title }}</h5>
+                <p>{{ lesson.content }}</p>
+            </div>
+        {% empty %}
+            <p>No lessons available for this course.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
